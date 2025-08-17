@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Random Quote Generater</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+            background: #f4f4f9;
+        }
+        #Quote-box{
+            font-size: 20px;
+            background: white;
+            padding: 20px;
+            margin: 20px auto;
+            width: 50%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        button{
+            padding: 10px 20px;
+            margin-top: 20px;
+            cursor: pointer;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover{
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Random Quote Generater</h1>
+    <div id="Quote-box">click the button to see a quote!..</div>
+    <button onclick="generatequote()">New Quote</button>
+    <script>
+        const quote = [
+            "believe you can and you're halfway there.",
+            "Dream big and dare to fail",
+            "Do something today that your future self will thank you for.",
+            "Don't watch the clock; do what it does.keep going"
+        ];
+        function generatequote(){
+            const RandomIntex = Math.floor(Math.random()* quote.length);
+            document.getElementById("Quote-box").innerHTML = quote[RandomIntex];
+        }
+    </script>
+</body>
+</html>
