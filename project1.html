@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Do-To list</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f6f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container{
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(0, 0,0, 0.1);
+            width: 350px;
+            text-align: center;
+        }
+        .input-box{
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        input{
+            flex: 1;
+            padding: 10x;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+        button{
+            padding: 10px 15px;
+            margin-left: 10px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        button:hover{
+            background: #0056b3;
+        }
+        ul{
+            list-style-type: none;
+            padding: 0px;
+        }
+        li{
+            background: #f1f1f1;
+            padding: 10px;
+            margin: 6px 0;
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        li.completed{
+            text-decoration: line-through;
+            background: #d4edda;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Do-To list</h1>
+        <div class="input-box">
+            <input type="text" id="task-input" placeholder="Enter a Task....">
+            <button id="add-btn">Add</button>
+        </div>
+         <ul id="task-list"></ul>
+    </div>
+    <script>
+        const addbtn = document.getElementById("add-btn");
+        const taskinput = document.getElementById("task-input");
+        const tasklist = document.getElementById("task-list"); 
+
+        window.onload = () => {
+            const savedtasks = JSON.parse(localStorage.getItem("tasks")) || [];
+            savedtasks.foreach(task => addtask(task.text,task.completed));
+        }
+
+        addbtn.addEventListener("click",() =>{
+            const tasktext = taskinput.value.trim();
+            if(tasktext !==""){
+                addtask(tasktext);
+                savetasks();
+                taskinput.value = "";
+            }
+        });
+
+        function addtask(text,completed = false){
+            const li = document.createElement("li");
+            li.textContent=taxt;
+            if(completed){
+                li.classList.add("completed");
+                li.addEventListener("click",() =>{
+                    li.classList.toggle("completed");
+                    savedtask();
+                });
+                const deletebtn = document.createElement("botton");
+                deletebtn.textContent = "X";
+                deletebtn.addEventListener("click",(e) => {
+                    e.stopPropagation();
+                    li.remove();
+                    savetasks();
+                });
+                li.appendChild(deletebtn);
+                tasklist.appendChild(li);
+            }
+
+            function savedtask(){
+                const tasks = [];
+                document.querySelectorAll("#task-list li").foreach(li => {
+                    tasks.push({
+                        text:li.firstChild.textContent,completed: li.classList.contains("completed")
+                    });
+                });
+                localStorage.setItem("tasks",JSON.stringify(tasks));
+            }
+               }
+    </script>
+</body>
+</html>
