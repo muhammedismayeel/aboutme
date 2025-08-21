@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>color changer app</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            transition: background-color 0.5s;
+            padding: 50px;
+        }
+        h1{
+            margin-bottom: 30px;
+        }
+        button{
+            padding: 12px 25px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            background: #333;
+            color: white;
+            transition: 0.3s;  
+        }
+        button:hover{
+            background: #555;
+        }
+        #color-code{
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Color changer</h1>
+    <button id="changecolor">Change backgrount</button>
+    <div id="color-code">
+        <h3>Current Color : #ffffff</h3>
+    </div>
+    <script>
+        const button = document.getElementById('changecolor');
+        const colorcode = document.getElementById('color-code');
+
+        function getRandomColor(){
+            let letter = "#0123456789ABCDEF";
+            let color ="#";
+            for(let i=0;i<6;i++){
+                color +=letter[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        button.addEventListener('click',() => {
+            const newColor = getRandomColor();
+            document.body.style.backgroundColor = newColor;
+            colorcode.textContent = 'Current Color :' + newColor;
+        });
+    </script>
+</body>
+</html>
