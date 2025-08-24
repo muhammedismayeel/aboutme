@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login page</title>
+    <style>
+         *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "poppins" , sans-serif;
+         }
+         body{
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg,#6e8efb , #a777e3);
+         }
+         .login-container{
+            width: 350px;
+            padding: 2rem;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0, 0, 0.2);
+            animation: fadein 1s ease-in-out;
+         }
+         .login-container h1{
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #333;
+         }
+         .input-group {
+            margin-bottom: 1rem;
+         }
+         .input-group label{
+            font-size: 14px;
+            color: #555;
+            display: block;
+            margin-bottom: 5px;
+         }
+         .input-group input{
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            outline: none;
+            transition: 0.3s;
+         }
+         .input-group input:focus{
+            border-color: #6e8efb;
+            box-shadow: 0 0 5px rgba(110,142,251,0.5);
+         }
+         .btn{
+            width: 100%;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+            background: rgb(118, 118, 248);
+         }
+         .btn:hover{
+            opacity: 0.9s;
+         }
+         .extra-link{
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 14px;
+         }
+         .extra-link a{
+            color: #6e8efb;
+            text-decoration: none;
+         }
+         @keyframes fadein {
+            from{
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to{
+                opacity: 1;
+                transform: translateY(0);
+            }
+         }
+    </style>
+</head>
+<body>
+      <div class="login-container">
+        <h1>Login</h1>
+        <from>
+            <div class="input-group">
+                <label for="email">Email :</label>
+                <input type="email" placeholder="Enter your name">
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" placeholder="Enter your password">
+            </div>
+            <button type="submit" class="btn">Login</button>
+            <div class="extra-link">
+                <p><a href="">forgot password</a></p><br>
+                <p><a href="">Don't have an account?</a></p>
+            </div>
+        </from>
+      </div>
+</body>
+</html>
